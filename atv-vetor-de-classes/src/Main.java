@@ -10,7 +10,24 @@ public class Main {
         Aluno[] array = new Aluno [QTD_PESSOAS];
 
         lerAlunos(array);
-        aprovaReprova(array);
+
+        int qtdAprovados = quantidadeAprovados(array,0);
+        int qtdRep = array.length - qtdAprovados;
+
+        Aluno[] aprovados = new Aluno[qtdAprovados];
+        Aluno[] reprovados = new Aluno[qtdRep];
+
+        preencherAproRepro(array, aprovados, reprovados);
+
+        mensagemAprovados(aprovados);
+        imprimir(aprovados);
+
+        mensagemReprovados(reprovados);
+        imprimir(reprovados);
+
+
+
+
 
     }
 
@@ -38,11 +55,11 @@ public class Main {
 
         System.out.print("Digite a 1ª nota do Aluno: ");
         double nota1 = ler.nextDouble();
-        ler.nextLine();
+        
 
         System.out.print("Digite a 2ª nota do Aluno: ");
         double nota2 = ler.nextDouble();
-        ler.nextLine();
+
 
         System.out.print("Digite a 3ª nota do Aluno: ");
         double nota3 = ler.nextDouble();
@@ -54,8 +71,8 @@ public class Main {
 
     }
 
-    public static void aprovaReprova(Aluno[] a){
-        int qtdApr = 0, qtdRep = 0;
+    public static int quantidadeAprovados(Aluno[] a, int qtdApr ){
+        int  qtdRep = 0;
 
         for (int i = 0; i < a.length; i++) {
             if (a[i].mediafinal < 5){
@@ -65,32 +82,39 @@ public class Main {
                 qtdApr ++;
             }
         }
-        Aluno[] apro = new Aluno[qtdApr];
-        Aluno[] repro = new Aluno[qtdRep];
 
+        return qtdApr;
+
+    }
+
+    public static void preencherAproRepro(Aluno[] v, Aluno[] ap, Aluno[] rep){
         int indexApro = 0, indexRepro = 0;
 
-        for (int i = 0; i < a.length; i++) {
-            if (a[i].mediafinal < 5) {
-               repro[indexRepro] = a[i];
-                indexRepro ++;
+        for (int i = 0; i < v.length; i++) {
+         if (v[i].mediafinal < 5) {
+            rep[indexRepro] = v[i];
+            indexRepro ++;
 
-            } else {
-               apro[indexApro] = a[i];
-                indexApro ++;
-            }
+         } else {
+            ap[indexApro] = v[i];
+            indexApro ++;
+         }
         }
+    }
 
+    public static void mensagemAprovados(Aluno[] a){
         String feliz = "\uD83D\uDE0A";
-
-        String triste = "\uD83D\uDE22";
 
         System.out.printf("\n%s%s%s%s%s%s%s%s%s%s%s%s%s Alunos Aprovados %s%s%s%s%s%s%s%s%s%s%s%s%s\n", feliz, feliz, feliz, feliz, feliz, feliz, feliz, feliz, feliz,
                 feliz, feliz, feliz, feliz, feliz, feliz, feliz, feliz, feliz, feliz, feliz, feliz, feliz, feliz, feliz, feliz, feliz);
-        imprimir(apro);
+    }
+
+    public static void mensagemReprovados(Aluno[] r){
+        String triste = "\uD83D\uDE22";
+
         System.out.printf("\n%s%s%s%s%s%s%s%s%s%s%s%s%s Alunos Reprovados %s%s%s%s%s%s%s%s%s%s%s%s%s\n",triste, triste,triste,triste, triste, triste, triste, triste,
                 triste, triste, triste, triste, triste, triste, triste, triste, triste, triste, triste, triste, triste, triste, triste, triste, triste, triste);
-        imprimir(repro);
+
     }
 
 }
