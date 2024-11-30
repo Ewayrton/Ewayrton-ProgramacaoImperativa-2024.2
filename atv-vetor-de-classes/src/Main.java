@@ -112,7 +112,7 @@ public class Main {
     public static void mensagemReprovados(Aluno[] r){
         String triste = "\uD83D\uDE22";
 
-        System.out.printf("\n%s%s%s%s%s%s%s%s%s%s%s%s%s Alunos Reprovados %s%s%s%s%s%s%s%s%s%s%s%s%s\n",triste, triste,triste,triste, triste, triste, triste, triste,
+        System.out.printf("\n%s%s%s%s%s%s%s%s%s%s%s%s%s Alunos Reprovados %s%s%s%s%s%s%s%s%s%s%s%s%s\n ",triste, triste,triste,triste, triste, triste, triste, triste,
                 triste, triste, triste, triste, triste, triste, triste, triste, triste, triste, triste, triste, triste, triste, triste, triste, triste, triste);
 
     }
